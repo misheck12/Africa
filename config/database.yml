@@ -20,20 +20,18 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: 123456
 
 development:
   <<: *default
-  database: africa
-  username: postgres
-  password: 123456
-  host: localhost
-  port: 5432
+  database: Africa
 
   # The specified database role being used to connect to postgres.
-  # To create additional roles in postgres see `$ createuser --help`.
+  # To new additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: Africa
+  #username: MagicBlog
 
   # The password associated with the postgres role (username).
   #password:
@@ -61,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: africa_test
+  database: Africa_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -85,7 +83,6 @@ test:
 #
 production:
   <<: *default
-  <<: *default
-  database: africa_production
-  username: africa
-  password: <%= ENV["AFRICA_DATABASE_PASSWORD"] %>
+  database: Africa_production
+  username: postgres
+  password: 123456
