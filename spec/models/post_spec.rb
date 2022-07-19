@@ -15,11 +15,24 @@ RSpec.describe Post, type: :model do
   end
 
   it 'is not valid with title exceeding 250 characters ' do
-    expect(Post.create(author: @author, title: '', text: 'This is my first post')).to_not be_valid
+    title = 'r' * 251
+    expect(Post.create(author: @author, title:, text: 'This is my first post')).to_not be_valid
   end
 
   it 'should update post counter' do
     Post.create(author: @author, title: 'Hello', text: 'This is my first post')
     expect(@author.posts_counter).to eq(1)
+  end
+
+  it 'should return five (5) most recent comments' do
+    post = Post.create(author: @author, title: 'Hello', text: 'This is my first post')
+    Comment.create(post:, author: @author, text: 'Hi Tom!')
+    Comment.create(post:, author: @author, text: 'Hi Tom!')
+    Comment.create(post:, author: @author, text: 'Hi Tom!')
+    Comment.create(post:, author: @author, text: 'Hi Tom!')
+    Comment.create(post:, author: @author, text: 'Hi Tom!')
+    Comment.create(post:, author: @author, text: 'Hi Tom!')
+
+    expect(post.five_recent_comment.count).to eq(5)
   end
 end
