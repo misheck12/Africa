@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   validates :name, length: { minimum: 1 }
   validates :posts_counter, numericality: { greater_than_or_equal_to: 0 }
-  validates :name, presence: true
 
   has_many :comments, foreign_key: :author_id
   has_many :likes, foreign_key: :author_id
