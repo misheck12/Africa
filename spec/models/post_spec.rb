@@ -15,8 +15,7 @@ RSpec.describe Post, type: :model do
   end
 
   it 'is not valid with title exceeding 250 characters ' do
-    title = 'r' * 251
-    expect(Post.create(author: @author, title:'', text: 'This is my first post')).to_not be_valid
+    expect(Post.create(author: @author, title: '', text: 'This is my first post')).to_not be_valid
   end
 
   it 'should update post counter' do
