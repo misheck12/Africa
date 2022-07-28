@@ -1,0 +1,7 @@
+<article class="comment-form">
+<%= form_with url: user_post_comments_path(post.author_id, post.id) do |form| %>
+
+    <div><%= form.text_area :text, placeholder: "Add a nice comment for #{post.author.name}!" ,class: 'comment-text' %></div>
+    <%= form.submit "Add comment", class: 'lc-btn' %>
+<% end %>
+<article>

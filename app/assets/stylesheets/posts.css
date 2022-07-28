@@ -1,0 +1,72 @@
+.posts,
+.post,
+.comments {
+  margin: 10px 30px;
+  padding: 10px 30px;
+  width: 95%;
+  border-radius: 4px;
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.post {
+  border: none;
+}
+
+.post-header {
+  font-size: 2em;
+  color: #1a3349;
+}
+
+.post-counter {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.post-comment-like {
+  align-self: flex-end;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-btn,
+.lc-btn {
+  padding: 10px 15px;
+  margin: 10px 40px;
+  border: 1px solid grey;
+  border-radius: 12px;
+  align-self: center;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.comment-text {
+  width: 80vw;
+  margin: 0 auto;
+  height: 30vh;
+}
+
+.lc-btn {
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.post-btn:active,
+.lc-btn:active {
+  background-color: #dbdbdb;
+}
+
+button:hover,
+.lc-btn:hover {
+  cursor: pointer;
+}
