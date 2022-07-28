@@ -1,33 +1,31 @@
 class CommentsController < ApplicationController
+  def index
+    @comments = Comment.all
+  end
+
+  def show; end
+
   def new
-    puts("params #{params}")
-    @post = Post.find(params[:post_id])
-    @user = ApplicationController.new.current_user
-    @comment = @user.comments.new
-    render :new, locals: { comment: @comment }
+    @comment = Comment.new
   end
 
   def create
-    @post = Post.find(params[:post_id])
-    @user = ApplicationController.new.current_user
-    add_comment = Comment.create(author: @user, post: @post, text: comment_params['text'])
-    @post.save
+    @comment = current_user.comments.new(comment_params)
+    @comment.post_id = params[:post_id]
     respond_to do |format|
-      format.html do
-        if add_comment.save
-          flash[:success] = 'Post created successfully'
-        else
-          flash.now[:error] = 'Error: Post could not be created'
-          render :new, locals: { comment: add_comment }
+      if @comment.save
+        format.html do
+          redirect_to user_post_path(current_user.id, params[:post_id]), notice: 'Post was successfully created.'
         end
+      else
+        format.html { render :new, status: :unprocessable_entity }
       end
-      redirect_to user_posts_url
     end
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:text)
+    params.permit(:text)
   end
 end

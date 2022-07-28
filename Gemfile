@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.2'
+ruby '3.0.4'
 
 gem 'devise'
 
@@ -81,9 +81,4 @@ end
 
 group :development, :test do
   gem "database_cleaner"
-end
-
-group :test do
-  gem "capybara"
-  gem "selenium-webdriver"
 end

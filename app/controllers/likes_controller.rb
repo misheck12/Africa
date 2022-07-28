@@ -1,19 +1,21 @@
 class LikesController < ApplicationController
+  def index
+    @likes = Like.all
+  end
+
+  def show; end
+
+  def new
+    @like = Like.new
+  end
+
   def create
-    @post = Post.find(params[:post_id])
-    @user = ApplicationController.new.current_user
-    @like = @user.likes.new
-    add_like = Like.create(author: @user, post: @post)
-    @post.save
-    respond_to do |format|
-      format.html do
-        if add_like.save
-          flash[:success] = 'Post created successfully'
-        else
-          flash.now[:error] = 'Error: Post could not be created'
-          render :new, locals: { like: add_like }
-        end
-      end
+    @like = current_user.likes.new
+    @like.post_id = params[:post_id]
+    if @like.save
+      redirect_to user_post_path(current_user.id, params[:post_id])
+    else
+      render :create
     end
   end
 end

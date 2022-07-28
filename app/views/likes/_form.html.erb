@@ -1,0 +1,8 @@
+<%= form_with url: user_post_likes_path(post.author_id, post.id) do |form| %>
+    <%= form.hidden_field :author_id, value: @user.id %>
+    <%= form.hidden_field :post_id%>
+  <%= form.submit "Like", class: 'lc-btn' %>
+    <span>
+      <%= post.likes_counter ? post.likes_counter  : 0 %>
+    </span>
+<% end %>
