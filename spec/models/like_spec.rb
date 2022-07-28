@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Comment, type: :model do
+RSpec.describe Like, type: :model do
   before :each do
     @author = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
                           bio: 'Teacher from Mexico.')
@@ -8,6 +8,11 @@ RSpec.describe Comment, type: :model do
   end
 
   it 'is valid with valid attributes' do
-    Comment.create(post: @post, author: @author, text: 'Hi Tom!')
+    Like.create(post: @post, author: @author)
+  end
+
+  it 'should update like_counter' do
+    Like.create(post: @post, author: @author)
+    expect(@post.likes_counter).to eq(1)
   end
 end
