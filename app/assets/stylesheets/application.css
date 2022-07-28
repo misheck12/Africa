@@ -8,55 +8,58 @@
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
  * compiled file so the styles you add here take precedence over styles defined in any other CSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to new a new file per style scope.
+ * It is generally better to create a new file per style scope.
  *
  *= require_tree .
  *= require_self
  */
 
-.users-ctn {
-  width: 80%;
+.login-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.user-ctn {
-  height: 50px;
-  display: flex;
-  flex-direction: row;
+.form-msg {
+  border: 1px solid rgba(255, 255, 255, 0.658);
+  background-color: #ffa245d8;
+  border-radius: 6px;
 }
 
-.user-l-info {
-  height: 50px;
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  margin-left: 10px;
-  border-radius: 5px;
-  background-color: rgba(102, 102, 102, 0.78);
+.login-field {
+  margin: 2px;
+  width: 60vw;
 }
 
-.post-ctn {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin: 20px;
+.login-field-input {
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 60vw;
+  border-radius: 3px;
+  border: 1px solid #3e3e3e;
 }
 
-.post-info-ctn {
-  display: flex;
-  flex-direction: column;
+.login-form-btn {
+  padding: 10px;
+  width: 60vw;
+  margin: 10px 1px 30px 1px;
+  outline: none;
+  border: 1px solid #3e3e3e;
+  border-radius: 3px;
 }
 
-.post-info-head {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.login-form-btn:hover {
+  background-color: #f1f1f1;
+  color: rgb(28, 28, 28);
+  cursor: pointer;
 }
 
-.post-right-info {
-  display: flex;
-  gap: 20px;
+.login-form-btn:active {
+  background-color: #dcdcdc;
+  color: rgb(28, 28, 28);
+  cursor: pointer;
 }
