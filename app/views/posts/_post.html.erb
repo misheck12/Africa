@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="posts">
   <%= link_to user_post_path(post.author_id, post.id) do %>
     <h4><%=post.title%></h4>
@@ -19,34 +18,3 @@
     </span>
   </p>
 </div>
-=======
-<div class="comments">
-  <div class="post-info-ctn">
-    <div class="post-info-head">
-      <h3>Post: <%= post.id %><br><%= link_to "#{post.title} by #{@user.name}", user_post_path(@user.id, post.id) %></h3>
-      <div class="post-right-info">
-        <h5>Comments : <%= post.comments_counter %></h5>
-        <h5>Likes : <%= post.likes_counter %></h5>
-      </div>
-    </div>
-
-    <p><%= post.text %></p>
-  </div>
-  <% post.five_recent_comment.includes([:author]).each do |comment| %>
-    <div>
-      <h6><%= comment.author.name %>: <%= comment.text %></h6>
-    </div>
-  <% end %>
-
-  <div>
-    <%= link_to user_post_path(@user, post), class: "link-info" do %>
-      <button>Add comment</button>
-    <% end %>
-
-    <%= form_with model: @like, url: user_post_likes_path(@user, post), method: :post, class: 'form' do |f| %>
-      <div> <%= f.submit "Add a like" %> </div>
-    <% end %>
-  </div>
-
-</div>
->>>>>>> 9fcc4eacc1865e4fd24c87cda75c6a5f5125329f

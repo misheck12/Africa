@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="posts">
     <div class="post_comments">
         <h4><%=@post.title%> by: <%=@post.author.name%></h4>
@@ -18,25 +17,3 @@
         <% end %>
     <% end %>
 </div>
-=======
-<section class="posts">
-    
-        <div class="post">
-            <h1 class="post-header"><%=@post.title%></h1>
-            <p class="post-by">by: <%=@post.author.name%></p>
-            <p class="post-comment-like">Comments: <%=@post.comments_counter%>, Likes: <%=@post.likes_counter%></p>
-        </div>
-    
-        <p class="post"><%=@post.text%></p>
-
-    <article class="comments">
-        <%@post.comments.includes([:author]).each do |comment|%>
-            <p><%= comment.author.name %>: <%=comment.text%></p>
-        <%end%>
-    </article>
-    <article class="post-cl">
-        <%= render 'comments/form', post: @post %>
-        <%= render 'likes/form', post: @post %>
-    </article>
-</section>
->>>>>>> 9fcc4eacc1865e4fd24c87cda75c6a5f5125329f
