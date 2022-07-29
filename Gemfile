@@ -5,6 +5,8 @@ ruby '3.0.4'
 
 gem 'devise'
 
+gem 'jwt'
+
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -54,6 +56,7 @@ gem 'bullet', '~> 7.0', '>= 7.0.2'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'database_cleaner'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 
   # Add Rspec for testing
@@ -79,6 +82,3 @@ group :test do
   gem 'webdrivers'
 end
 
-group :development, :test do
-  gem 'database_cleaner'
-end
