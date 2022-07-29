@@ -3,6 +3,7 @@ class PostsController < ApplicationController
     @users = User.all
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:comments, :author)
+    render :json => @posts
   end
 
   def show
