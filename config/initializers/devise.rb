@@ -126,7 +126,11 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
+<<<<<<< HEAD
   # config.pepper = '6619e751b5fd7bc072f7f36272b35c7f6efb0da216c8a34bda0fb05f87e2b64c033a29811eedbb53de273c258fde5bff2a92d518ec0c3760a989db0ae42362b2'
+=======
+  # config.pepper = '060b33fa2417c58d4d8e07b9c90fae019442de61891d4242a8c354c350b339470e63106e38054c5d889e836dcf8790d4584b9c89240c76e3f97dde885f504583'
+>>>>>>> 9fcc4eacc1865e4fd24c87cda75c6a5f5125329f
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -157,7 +161,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = true
+  config.reconfirmable = false
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]

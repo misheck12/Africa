@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2022_07_21_122246) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2022_07_28_203144) do
+>>>>>>> 9fcc4eacc1865e4fd24c87cda75c6a5f5125329f
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,7 +44,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_122246) do
     t.integer "likes_counter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.bigint "author_id", null: false
+=======
+    t.string "text"
+    t.string "title"
+    t.integer "comments_counter", default: 0
+    t.integer "likes_counter", default: 0
+    t.bigint "author_id"
+>>>>>>> 9fcc4eacc1865e4fd24c87cda75c6a5f5125329f
     t.index ["author_id"], name: "index_posts_on_author_id"
   end
 
@@ -56,7 +68,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_122246) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+<<<<<<< HEAD
     t.string "role"
+=======
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+>>>>>>> 9fcc4eacc1865e4fd24c87cda75c6a5f5125329f
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -10,13 +10,25 @@
   <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
 <% end %>
 
+<<<<<<< HEAD
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+=======
+<%
+=begin%>
+ <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+>>>>>>> 9fcc4eacc1865e4fd24c87cda75c6a5f5125329f
   <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
 <% end %>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+<<<<<<< HEAD
 <% end %>
+=======
+<% end %> 
+<%
+=end%>
+>>>>>>> 9fcc4eacc1865e4fd24c87cda75c6a5f5125329f
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>

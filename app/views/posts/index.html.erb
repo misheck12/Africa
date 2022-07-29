@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>All <%= @user.name %>'s Posts</h1>
 
 <%= render @user %>
@@ -15,3 +16,14 @@
 <%end%>
 
 <button>Pagination</button>
+=======
+<section class="user-section">
+<%= render @user %>
+<article class="comments">
+<%@user.posts.each do |post| %>
+    <%= render post %>
+<%end%>
+</article>
+
+</section>
+>>>>>>> 9fcc4eacc1865e4fd24c87cda75c6a5f5125329f
