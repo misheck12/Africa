@@ -24,10 +24,10 @@ RSpec.describe User, type: :model do
   it 'should return 3 posts' do
     author = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
                          bio: 'Teacher from Mexico.')
-    Post.create(author:, title: 'Hello', text: 'This is my first post')
-    Post.create(author:, title: 'Hello', text: 'This is my first post')
-    Post.create(author:, title: 'Hello', text: 'This is my first post')
-    Post.create(author:, title: 'Hello', text: 'This is my first post')
+    Post.create(author: author, title: 'Hello', text: 'This is my first post')
+    Post.create(author: author, title: 'Hello', text: 'This is my first post')
+    Post.create(author: author, title: 'Hello', text: 'This is my first post')
+    Post.create(author: author, title: 'Hello', text: 'This is my first post')
 
     expect(author.three_recent_posts.count).to eq(3)
   end
