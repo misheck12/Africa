@@ -17,7 +17,12 @@ RSpec.describe 'Testing user index page', type: :feature do
       scenario 'shows the right content' do
         visit users_path
         sleep(5)
-        expect(page).to have_content('Create new post')
+        expect(page).to have_content('John
+Number of posts : 0
+Sarah
+Number of posts : 0
+Tobin
+Number of posts : 0')
       end
 
       scenario 'See all usernames' do
