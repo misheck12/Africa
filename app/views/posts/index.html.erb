@@ -1,26 +1,17 @@
-<div>
-  <div class="user-ctn">
-    <%= image_tag(@user.photo + "images/rss.jpg", size: "50x50") %>
+<h1>All <%= @user.name %>'s Posts</h1>
 
-    <div class="user-l-info">
-      <h5><%= @user.name %></h5>
-      <h5>Number of posts : </h5>
+<%= render @user %>
+
+<% @post.each do |post| %>
+    <%= render post %>
+    <div class='comments'>
+        <% post.last_five_comments.each do |comment| %>
+        <p><%= comment.author.name %>: <%= comment.text %></p>
+        <% if can? :destroy, comment %>
+          <%= button_to 'Delete comment', user_post_comment_path(@user.id, post.id, comment.id), method: :delete %>
+        <% end %>
+        <%end%>
     </div>
+<%end%>
 
-  </div>
-  <% @posts.each do |post| %>
-    <%= link_to user_post_path(@user.id, post.id), class: "link-info" do %>
-      <div>
-        <%= post.title %>
-        <%= post.text %>
-      </div>
-    <% end %>
-    <div>
-      <h4>Username: Comment 1</h4>
-    </div>
-  <% end %>
-  <div>
-    <button>Pagination</button>
-  </div>
-
-</div>
+<button>Pagination</button>

@@ -1,35 +1,40 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
+
   def index
     @user = User.find(params[:user_id])
-    @posts = Post.where(author_id: params[:user_id])
+    @post = Post.where(author_id: @user.id).order(created_at: :desc)
   end
 
   def show
     @user = User.find(params[:user_id])
-    @post = Post.find(params[:id])
+    @post = Post.includes(:author, :comments).find(params[:id])
   end
 
   def new
-    puts('life in new')
-    @user = ApplicationController.new.current_user
-    @post = @user.posts.new
-    render :new, locals: { post: @post }
+    @user = current_user
+    @post = Post.new
   end
 
   def create
-    @user = ApplicationController.new.current_user
-    add_post = @user.posts.new(post_params)
-    respond_to do |format|
-      format.html do
-        if add_post.save
-          flash[:success] = 'Post created successfully'
-          redirect_to user_posts_path
-        else
-          flash.now[:error] = 'Error: Post could not be created'
-          render :new, locals: { post: add_post }
-        end
-      end
+    @current_user = User.find(params[:user_id])
+    @post = @current_user.posts.new(post_params)
+    @post.comments_counter = 0
+    @post.likes_counter = 0
+
+    if @post.save
+      redirect_to @current_user
+    else
+      render :new, alert: 'An error has occurred while creating the post'
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @user = User.find(params[:user_id])
+    @post.destroy!
+    redirect_to user_posts_path(@user.id), notice: 'Post deleted successfully!'
   end
 
   private

@@ -1,4 +1,11 @@
-<%= form_with model: @comment, url: user_post_comments_path(@user, @post), method: :post, class: 'form' do |f| %>
-  <div> <%= f.label :text, 'Enter comment' %><br> <%= f.text_field :text %> </div>
-  <div> <%= f.submit "Add a comment" %> </div>
+<h1>Add a new comment for <%= @post.title %></h1>
+
+<%= form_with model: @comment, url: user_post_comments_path(@current_user, @post), method: :post, class: 'form' do |f|%>
+    <div>
+      <%= f.label :text, 'Enter post comment' %><br>
+      <%= f.text_area :text, size: "60x6" %>
+    </div>
+    <div>
+      <%= f.submit "Comment"%>
+    </div>
 <% end %>

@@ -1,28 +1,32 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only: %i[create destroy]
+  load_and_authorize_resource
+
   def new
-    puts("params #{params}")
+    @current_user = current_user
     @post = Post.find(params[:post_id])
-    @user = ApplicationController.new.current_user
-    @comment = @user.comments.new
-    render :new, locals: { comment: @comment }
+    @comment = Comment.new
   end
 
   def create
     @post = Post.find(params[:post_id])
-    @user = ApplicationController.new.current_user
-    add_comment = Comment.create(author: @user, post: @post, text: comment_params['text'])
-    @post.save
-    respond_to do |format|
-      format.html do
-        if add_comment.save
-          flash[:success] = 'Post created successfully'
-        else
-          flash.now[:error] = 'Error: Post could not be created'
-          render :new, locals: { comment: add_comment }
-        end
-      end
-      redirect_to user_posts_url
+    @comment = Comment.new(comment_params)
+    @comment.author_id = current_user.id
+    @comment.post_id = @post.id
+
+    if @comment.save
+      redirect_to user_post_path(@post.author_id, @post.id)
+    else
+      render :new, alert: 'An error has occurred while creating the comment'
     end
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to user_post_path(@user.id, @post.id)
   end
 
   private
