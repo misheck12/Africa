@@ -1,0 +1,9 @@
+<section class="user-section">
+<%= render @user %>
+<article class="comments">
+<%@user.posts.each do |post| %>
+    <%= render post %>
+<%end%>
+</article>
+
+</section>

@@ -1,56 +1,61 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
+# Blog App
 
-# Project Name
-
-> Description the project.
-
+A simple blog app built using the Ruby on Rails framework.
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
-
-## Live Demo (if available)
-
-[Live Demo Link](https://livedemo.com)
-
+- Ruby on Rails
+- PostgreSQL
 
 ## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
 
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
+- [Ruby](https://www.ruby-lang.org/en/)
+- [Rails](https://gorails.com/)
+
 ### Setup
+
+- Make sure you have Ruby on Rails set up properly on your computer
+- Clone or download this repo on your machine
+- Enter project directory
+
+### Development Database
+
+```sh
+# Create user
+sudo -u postgres createuser blog -s
+# Create the database
+rake db:create
+```
 
 ### Install
 
-### Usage
+```sh
+bundle install
+```
 
-### Run tests
+### Run
 
-### Deployment
+```sh
+rails s
+```
 
+### Test
 
+```sh
+rspec
+```
 
-## Authors
+## Author
 
-👤 **Author1**
+👤 **Misheck Livingi**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@githubhandle](https://github.com/misheck12)
+- Twitter: [@twitterhandle](https://twitter.com/mishecklivingi2)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/misheck-livingi-a0b536142/)
 
 ## 🤝 Contributing
 
@@ -64,10 +69,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- Microverse
 
-## 📝 License
+## License
 
-This project is [MIT](./MIT.md) licensed.
+[MIT](./LICENSE)
