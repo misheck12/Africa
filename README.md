@@ -1,6 +1,6 @@
-# Blog App
+# Africa App
 
-A simple blog app built using the Ruby on Rails framework.
+A simple Africa app built using the Ruby on Rails framework.
 
 ## Built With
 
@@ -26,7 +26,7 @@ To get a local copy up and running follow these simple example steps.
 
 ```sh
 # Create user
-sudo -u postgres createuser blog -s
+sudo -u postgres createuser Africa -s
 # Create the database
 rake db:create
 ```

@@ -1,0 +1,7 @@
+<div class="sections">
+    <img src="<%= user.photo %>" alt="user photo"/>
+    <div class="users">
+        <h3><%= link_to user.name, user %></h3>
+        <p> Number of posts: <%= user.posts_counter ? user.posts_counter : 0 %></p>
+    </div>
+</div>
