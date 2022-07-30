@@ -12,4 +12,11 @@ class Ability
 
     can :destroy, [Post, Comment]
   end
+  
+def initialize(user)
+  if user.admin?
+    can :manage, :all
+  else
+    can :read, :all
+  end
 end
