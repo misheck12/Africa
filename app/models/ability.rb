@@ -13,8 +13,7 @@ class Ability
     can :destroy, [Post, Comment]
 
     return unless user.admin?
-      
-    can :destroy, [Post, Comment]
 
+    can :destroy, [Post, Comment]
   end
 end
