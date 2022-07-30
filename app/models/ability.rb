@@ -12,7 +12,8 @@ class Ability
 
     can :destroy, [Post, Comment]
 
-    if user.admin?
-      can :manage, :all 
+    return unless user.admin?
+
+    can destroy, [Post, Comment]
   end
 end
