@@ -3,6 +3,9 @@
     <h4><%=post.title%></h4>
   <% end %>
   <p><%=post.text%></p>
+    <% if can? :destroy, post %>
+      <%= button_to 'Delete post', user_post_path(post.author_id, post.id), method: :delete %>
+    <% end %>
   <p>
     <span>
     <%= link_to "Comments:", new_user_post_comment_path(@user, post) %> <%= post.comments_counter ? post.comments_counter : 0 %>

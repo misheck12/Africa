@@ -7,6 +7,9 @@
     <div class='comments'>
         <% post.last_five_comments.each do |comment| %>
         <p><%= comment.author.name %>: <%= comment.text %></p>
+        <% if can? :destroy, comment %>
+          <%= button_to 'Delete comment', user_post_comment_path(@user.id, post.id, comment.id), method: :delete %>
+        <% end %>
         <%end%>
     </div>
 <%end%>

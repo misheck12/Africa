@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only: %i[create destroy]
+  load_and_authorize_resource
+
   def new
-    @current_user = ApplicationController.new.current_user
+    @current_user = current_user
+
     @post = Post.find(params[:post_id])
     @comment = Comment.new
   end
@@ -16,6 +20,14 @@ class CommentsController < ApplicationController
     else
       render :new, alert: 'An error has occurred while creating the comment'
     end
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to user_post_path(@user.id, @post.id)
   end
 
   private

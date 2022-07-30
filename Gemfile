@@ -49,7 +49,9 @@ gem 'tzinfo-data'
 gem 'bootsnap', require: false
 
 gem 'bullet', '~> 7.0', '>= 7.0.2'
+gem 'cancancan', '~> 3.4'
 gem 'devise', '~> 4.8', '>= 4.8.1'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
+
   def index
     @user = User.find(params[:user_id])
     @post = Post.where(author_id: @user.id).order(created_at: :desc)
@@ -25,6 +28,13 @@ class PostsController < ApplicationController
     else
       render :new, alert: 'An error has occurred while creating the post'
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @user = User.find(params[:user_id])
+    @post.destroy!
+    redirect_to user_posts_path(@user.id), notice: 'Post deleted successfully!'
   end
 
   private
