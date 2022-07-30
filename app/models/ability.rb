@@ -11,6 +11,10 @@ class Ability
     return unless user.role?
 
     can :destroy, [Post, Comment]
+
+    return unless user.admin?
+
+    can :destroy, [Post, Comment]
   end
   
 def initialize(user)
